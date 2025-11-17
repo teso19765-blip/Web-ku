@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pencarian Kode</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <div class="container">
+    <h><img src="https://iconlogovector.com/uploads/images/2024/12/lg-675e2146ead1e-Pokphand.webp" style="height: 200px; width: 200px; position: center;"></h>
+    <h1 id="kucing1"><b>CEK KODE LABEL</b>
+    </h1>
+    <p><b>Masukkan Kode Dengan Benar</b></p>
+    <input type="text" id="kodeInput" placeholder="KETIK">
+    <button onclick="CekInformasi()">Cek Informasi</button>
+    <div id="hasil"></div>
+   <div id="infoModal">
+  <div class="info-content">
+    <span onclick="closeInfoModal()" style="float:right; font-size:24px; cursor:pointer;">&times;</span>
+    <div id="infoModalBody"></div>
+  </div>
+</div>
+  </div>
+
+  
+  <div id="errorModal" style="display:none; position:fixed; z-index:1; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.5);">
+    <div style="background:darkred; 
+            position:absolute; 
+            top:50%; 
+            left:50%; 
+            transform:translate(-50%, -50%);
+            padding:20px; 
+            width:300px; 
+            height:150px; 
+            border-radius:15px; 
+            text-align:center;">
+      <span onclick="document.getElementById('errorModal').style.display='none'" style="float:right; font-size:20px; cursor:pointer;">&times;</span>
+      <h3 id="boat">⚠️ Kode Salah⚠️</h3>
+      <p1>Kode Yang Anda Masukkan Tidak Ditemukan.</p1>
+    </div>
+  </div>
+<script>
+  const dataKode = {
+    '122': { kode: 'Budi', Masa_Aktif: '11-09-2025', status: 'Aktif' },
+    'ACODE2': { nama: 'Rehan', tanggal: '15-10-2025', status: 'Expired' },
+    'ACODE3': { nama: 'API', tanggal: '01-12-2025', status: 'Pending' },
+    'ACODE4': { nama: 'Dewi', tanggal: '25-05-2025', status: 'Aktif' },
+    'ACODE5': { nama: 'Eko', tanggal: '30-06-2025', status: 'Expired' },
+    'ACODE6': { nama: 'Fajar', tanggal: '05-07-2025', status: 'Pending' },
+    'ACODE7': { nama: 'Gita', tanggal: '10-08-2025', status: 'Aktif' },
+    'ACODE8': { nama: 'Hadi', tanggal: '15-09-2025', status: 'Expired' },
+    'ACODE9': { nama: 'Ika', tanggal: '20-10-2025', status: 'Pending' },
+    'ACODE10': { nama: 'Joko', tanggal: '25-11-2025', status: 'Aktif' },
+    'ACODE11': { nama: 'Kiki', tanggal: '01-12-2025', status: 'Expired' },
+    'ACODE12': { nama: 'Lesti', tanggal: '05-01-2025', status: 'Pending' },
+    'ACODE13': { nama: 'Maya', tanggal: '10-02-2025', status: 'Aktif' },
+    'ACODE14': { nama: 'Nina', tanggal: '15-03-2025', status: 'Expired' },
+    'ACODE15': { nama: 'Oki', tanggal: '20-04-2025', status: 'Pending' },
+    'ACODE16': { nama: 'Prita', tanggal: '25-05-2025', status: 'Aktif' },
+    'ACODE17': { nama: 'Qory', tanggal: '30-06-2025', status: 'Expired' },
+    'ACODE18': { nama: 'Rina', tanggal: '05-07-2025', status: 'Pending' },
+    'ACODE19': { nama: 'Sari', tanggal: '10-08-2025', status: 'Aktif' },
+    'ACODE20': { nama: 'Tono', tanggal: '15-09-2025', status: 'Expired' }
+  };
+
+function CekInformasi() {
+  const input = document.getElementById('kodeInput').value.toUpperCase().trim();
+
+  if (dataKode[input]) {
+    const infoHTML = `
+      <h5 id="jump">Informasi Kode</h5>
+      <p><strong>Kode:</strong> ${dataKode[input].kode}</p>
+      <p><strong>Masa Aktif:</strong> ${dataKode[input].Masa_Aktif}</p>
+      <p><strong>Status:</strong> ${dataKode[input].status}</p>
+    `;
+    const modal = document.getElementById('infoModal');
+    const modalBody = document.getElementById('infoModalBody');
+
+    modalBody.innerHTML = infoHTML;
+    modal.style.display = 'block';
+    setTimeout(() => {
+      modal.classList.add('show');    }, 10);
+  } else {
+    document.getElementById('errorModal').style.display = 'block';
+  }
+}
+
+function closeInfoModal() {
+  const modal = document.getElementById('infoModal');
+  modal.classList.remove('show');
+  setTimeout(() => {
+    modal.style.display = 'none';
+  }, 300);
+}
+  
+  
+  document.getElementById('infoModal').classList.remove('show');
+
+  function closeErrorModal() {
+    document.getElementById('errorModal').style.display = 'none';
+  }
+
+  window.addEventListener('click', function(e) {
+    if (e.target.id === 'infoModal') closeInfoModal();
+    if (e.target.id === 'errorModal') closeErrorModal();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeInfoModal();
+      closeErrorModal();
+    }
+  });
+</script>
+
+</body>
+</html>
