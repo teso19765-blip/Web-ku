@@ -9,9 +9,8 @@
 <body>
   
   <div class="container">
-    <h><img src="https://iconlogovector.com/uploads/images/2024/12/lg-675e2146ead1e-Pokphand.webp" style="height: 200px; width: 200px; position: center;"></h>
-    <h1 id="kucing1"><b>CEK KODE LABEL</b>
-    </h1>
+    <h><img src="https://iconlogovector.com/uploads/images/2024/12/lg-675e2146ead1e-Pokphand.webp" style="height: 50px; width: 50px; position: absolute; top: 20px; left: 20px;"></h>
+    <h class="JUDUL"><b>Pengecekan Label Dilakukan Dengan Teliti</b></h>
     <p><b>Masukkan Kode Dengan Benar</b></p>
     <input type="text" id="kodeInput" placeholder="KETIK">
     <button onclick="CekInformasi()">Cek Informasi</button>
@@ -26,7 +25,7 @@
 
   
   <div id="errorModal" style="display:none; position:fixed; z-index:1; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.5);">
-    <div style="background:darkred; 
+    <div style="background:red; 
             position:absolute; 
             top:50%; 
             left:50%; 
@@ -38,13 +37,43 @@
             text-align:center;">
       <span onclick="document.getElementById('errorModal').style.display='none'" style="float:right; font-size:20px; cursor:pointer;">&times;</span>
       <h3 id="boat">⚠️ Kode Salah⚠️</h3>
-      <p1>Kode Yang Anda Masukkan Tidak Ditemukan.</p1>
+      <p1>PERIKSA KEMBALI KODE ANDA</p1>
+      <button onclick="laporWA()"
+      style="background:#25D366;
+             color:white;
+             border:none;
+             padding:10px;
+             border-radius:8px;
+             width:100%;
+             margin-top:12px;
+             font-weight:bold;
+             cursor:pointer;">
+      Tekan Untuk Lapor 💢
+    </button>
     </div>
   </div>
 <script>
   const dataKode = {
     '122': { kode: 'Budi', Masa_Aktif: '11-09-2025', status: 'Aktif' },
-    '123': { kode: 'Pekor', Masa_Aktif: '12-09-2024', status: 'NonAktif' }
+    'ACODE2': { nama: 'Rehan', tanggal: '15-10-2025', status: 'Expired' },
+    'ACODE3': { nama: 'API', tanggal: '01-12-2025', status: 'Pending' },
+    'ACODE4': { nama: 'Dewi', tanggal: '25-05-2025', status: 'Aktif' },
+    'ACODE5': { nama: 'Eko', tanggal: '30-06-2025', status: 'Expired' },
+    'ACODE6': { nama: 'Fajar', tanggal: '05-07-2025', status: 'Pending' },
+    'ACODE7': { nama: 'Gita', tanggal: '10-08-2025', status: 'Aktif' },
+    'ACODE8': { nama: 'Hadi', tanggal: '15-09-2025', status: 'Expired' },
+    'ACODE9': { nama: 'Ika', tanggal: '20-10-2025', status: 'Pending' },
+    'ACODE10': { nama: 'Joko', tanggal: '25-11-2025', status: 'Aktif' },
+    'ACODE11': { nama: 'Kiki', tanggal: '01-12-2025', status: 'Expired' },
+    'ACODE12': { nama: 'Lesti', tanggal: '05-01-2025', status: 'Pending' },
+    'ACODE13': { nama: 'Maya', tanggal: '10-02-2025', status: 'Aktif' },
+    'ACODE14': { nama: 'Nina', tanggal: '15-03-2025', status: 'Expired' },
+    'ACODE15': { nama: 'Oki', tanggal: '20-04-2025', status: 'Pending' },
+    'ACODE16': { nama: 'Prita', tanggal: '25-05-2025', status: 'Aktif' },
+    'ACODE17': { nama: 'Qory', tanggal: '30-06-2025', status: 'Expired' },
+    'ACODE18': { nama: 'Rina', tanggal: '05-07-2025', status: 'Pending' },
+    'ACODE19': { nama: 'Sari', tanggal: '10-08-2025', status: 'Aktif' },
+    'ACODE20': { nama: 'Tono', tanggal: '15-09-2025', status: 'Expired' }
   };
 
 function CekInformasi() {
@@ -96,6 +125,13 @@ function closeInfoModal() {
     }
   });
 </script>
-
+<script>
+function laporWA() {
+  const pesan = "Halo admin, saya menemukan kode yang salah / expire. Mohon dibantu penggantiannya.";
+  const nomor = "083892342855"; // GANTI NOMOR INI
+  const url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
+  window.open(url, "_blank");
+}
+</script>
 </body>
 </html>
